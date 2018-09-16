@@ -13,13 +13,13 @@ public class VirtualPet {
 		thirst -= 5;
 		happyness += 5;
 
-		return (hunger + thirst + happyness);
+		return (hunger);
 	}
 
 	public int water() {
 		thirst += 40;
 
-		return (hunger + thirst + happyness);
+		return (thirst);
 	}
 
 	public int play() {
@@ -27,14 +27,14 @@ public class VirtualPet {
 		thirst -= 30;
 		happyness += 20;
 
-		return (hunger + thirst + happyness);
+		return (happyness);
 	}
 
 	public int tick() {
 		time++;
 		hunger -= 5;
-		thirst -= 10;
-		return (time + hunger + thirst);
+		thirst -= 5;
+		return (time + thirst);
 	}
 
 	public void userAction() {
@@ -51,14 +51,15 @@ public class VirtualPet {
 			System.out.println("You neglect, " + name);
 		}
 	}
-	
-	public void petStatus( ) {
-	System.out.println("Turn, " + time);
-	System.out.println(name);
-	System.out.println("Hunger: " + hunger);
-	System.out.println("Thirst: " + thirst);
-	System.out.println("Happyness: " + happyness);
+
+	public void petStatus() {
+		System.out.println("Turn, " + time);
+		System.out.println(name);
+		System.out.println("Hunger: " + hunger);
+		System.out.println("Thirst: " + thirst);
+		System.out.println("Happyness: " + happyness);
 	}
+
 	public void petCommands() {
 		System.out.println("");
 		System.out.println("What would you like to do?");
@@ -66,5 +67,23 @@ public class VirtualPet {
 		System.out.println("2, Water");
 		System.out.println("3, Play");
 		System.out.println("4, Do Nothing");
+	}
+
+	public void deadPet() {
+		if (hunger <= 0) {
+			System.out.println("Great you let " + name + " die.");
+			System.exit(0);
+		} else if (thirst <= 0) {
+			System.out.println("Great you let " + name + " die.");
+			System.exit(0);
+		}
+	}
+
+	public void happyPet() {
+		if (happyness >= 100) {
+			System.out.println("Congratulations your pet loves you.");
+			System.out.println("You Win!");
+			System.exit(0);
+		}
 	}
 }

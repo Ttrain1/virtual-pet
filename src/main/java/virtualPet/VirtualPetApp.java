@@ -12,13 +12,16 @@ public class VirtualPetApp {
 		System.out.println("Welcome please name your pet.");
 		VirtualPetOne.name = input.nextLine();
 
-		do {
+		while (VirtualPetOne.time < 100)
+		{
 			VirtualPetOne.petStatus();
 			VirtualPetOne.petCommands();
 			VirtualPetOne.userToDo = input.nextLine();
 			VirtualPetOne.userAction();
 			VirtualPetOne.tick();
-		} while (VirtualPetOne.time < 100);
+			VirtualPetOne.deadPet();
+			VirtualPetOne.happyPet();
+		}
 		input.close();
 	}
 }
